@@ -33,18 +33,25 @@ def list_tasks():
 
 # Function to mark a task as completed
 def mark_complete(index):
+    # Check if the provided index is out of range
     if index < 0 or index > len(tasks):  
-        print("Error: Invalid task index.")
+        print("Error: Invalid task index.")  # Notify the user of an invalid index
         return
+    # Mark the task at the given index as completed
     tasks[index]["completed"] = True
+    # Notify the user of the successful update
     print(f"Task {index + 1} marked as completed!")  
 
 # Function to delete a task
 def delete_task(index):
+    # Check if the provided index is out of range
     if index < 1 or index > len(tasks):  
-        print("Error: Invalid task index.")
+        print("Error: Invalid task index.")  # Notify the user of an invalid index
         return
+    # Remove the task at the given index
     tasks.pop(index)  
+    # Notify the user of the successful deletion
     print(f"Task {index} deleted.")
+
 
 
