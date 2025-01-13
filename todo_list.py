@@ -98,7 +98,7 @@ def main():
             list_tasks()
         elif choice == 3:
             try:
-                index = int(input("Enter the task number to mark as complete: ")) - 1
+                index = int(input("Enter the task number to mark as complete: "))
                 mark_complete(index)
             except ValueError:
                 print("Error: Please enter a valid task number.")
