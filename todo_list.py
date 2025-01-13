@@ -14,6 +14,7 @@ def add_task():
             print(f"Task '{task}' added successfully!")
             break  # Exit the loop when a valid task is added
 
+# Function to list all tasks
 def list_tasks():
     # Check if the task list is empty
     if len(tasks) == 0:
@@ -30,4 +31,11 @@ def list_tasks():
         task_list.append(task_str)
     return task_list
 
+# Function to mark a task as completed
+def mark_complete(index):
+    if index < 0 or index > len(tasks):  # Intentional off-by-one error
+        print("Error: Invalid task index.")
+        return
+    tasks[index]["completed"] = True
+    print(f"Task {index + 1} marked as completed!")  # Intentional off-by-one display error
 
