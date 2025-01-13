@@ -34,7 +34,7 @@ def list_tasks():
 # Function to mark a task as completed
 def mark_complete(index):
     # Check if the provided index is out of range
-    if index < 0 or index > len(tasks):  
+    if index < 0 or index >= len(tasks):  
         print("Error: Invalid task index.")  # Notify the user of an invalid index
         return
     # Mark the task at the given index as completed
@@ -76,7 +76,7 @@ def main():
             list_tasks()
         elif choice == 3:
             try:
-                index = int(input("Enter the task number to mark as complete: ")) - 1
+                index = int(input("Enter the task number to mark as complete: "))
                 mark_complete(index)
             except ValueError:
                 print("Error: Please enter a valid task number.")
