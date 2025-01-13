@@ -53,5 +53,47 @@ def delete_task(index):
     # Notify the user of the successful deletion
     print(f"Task {index} deleted.")
 
+# Main loop
+def main():
+    print("Welcome to the To-Do List Application!")
+    while True:
+        print("\nOptions:")
+        print("1. Add a Task")
+        print("2. List Tasks")
+        print("3. Mark Task as Complete")
+        print("4. Delete Task")
+        print("5. Exit")
+
+        try:
+            choice = int(input("Enter your choice: "))
+        except ValueError:
+            print("Error: Please enter a number.")
+            continue
+
+        if choice == 1:
+            task = input("Enter the task: ")
+            add_task(task)
+        elif choice == 2:
+            list_tasks()
+        elif choice == 3:
+            try:
+                index = int(input("Enter the task number to mark as complete: ")) - 1
+                mark_complete(index)
+            except ValueError:
+                print("Error: Please enter a valid task number.")
+        elif choice == 4:
+            try:
+                index = int(input("Enter the task number to delete: ")) - 1
+                delete_task(index)
+            except ValueError:
+                print("Error: Please enter a valid task number.")
+        elif choice == 5:
+            print("Exiting the application. Goodbye!")
+            break
+        else:
+            print("Error: Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
 
 
