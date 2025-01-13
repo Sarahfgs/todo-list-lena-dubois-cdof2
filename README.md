@@ -30,6 +30,7 @@ A simple console-based Python application for managing tasks. You can add, list,
 * List tasks.
 * Mark tasks as complete.
 * Delete tasks.
+* Edit tasks.
 * Exit the program.
 
 ## License
