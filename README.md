@@ -5,7 +5,7 @@ A simple console-based Python application for managing tasks. You can add, list,
 ## Getting Started
 
 ### Prerequisites
-- Python 3.x
+- Python 3.x 
 
 ### Installation
 1. Clone the repository:
