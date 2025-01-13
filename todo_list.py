@@ -53,6 +53,27 @@ def delete_task(index):
     # Notify the user of the successful deletion
     print(f"Task {index} deleted.")
 
+# Function to edit a task
+def edit_task():
+    task_list = list_tasks()
+    if not task_list:
+        return  # If no tasks, do nothing.
+
+    try:
+        task_number = int(input("\nEnter the task number you want to edit: ")) - 1
+        if task_number < 0 or task_number >= len(tasks):
+            print("Error: Invalid task number.")
+            return
+
+        new_task = input("Enter the new task description: ").strip()
+        if new_task:
+            tasks[task_number]["task"] = new_task
+            print(f"Task {task_number + 1} updated successfully!")
+        else:
+            print("Error: Task description cannot be empty.")
+    except ValueError:
+        print("Error: Please enter a valid task number.")
+
 # Main loop
 def main():
     print("Welcome to the To-Do List Application!")
@@ -62,7 +83,8 @@ def main():
         print("2. List Tasks")
         print("3. Mark Task as Complete")
         print("4. Delete Task")
-        print("5. Exit")
+        print("5. Edit Task")
+        print("6. Exit")
 
         try:
             choice = int(input("Enter your choice: "))
@@ -76,7 +98,7 @@ def main():
             list_tasks()
         elif choice == 3:
             try:
-                index = int(input("Enter the task number to mark as complete: "))
+                index = int(input("Enter the task number to mark as complete: ")) - 1
                 mark_complete(index)
             except ValueError:
                 print("Error: Please enter a valid task number.")
@@ -87,6 +109,8 @@ def main():
             except ValueError:
                 print("Error: Please enter a valid task number.")
         elif choice == 5:
+            edit_task()
+        elif choice == 6:
             print("Exiting the application. Goodbye!")
             break
         else:
@@ -94,5 +118,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
