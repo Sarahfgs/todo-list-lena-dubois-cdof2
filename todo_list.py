@@ -72,7 +72,7 @@ def main():
 
         if choice == 1:
             task = input("Enter the task: ")
-            add_task(task)
+            add_task()
         elif choice == 2:
             list_tasks()
         elif choice == 3:
