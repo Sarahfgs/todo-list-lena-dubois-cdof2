@@ -5,7 +5,28 @@ A simple console-based Python application for managing tasks. You can add, list,
 ## Getting Started
 
 ### Prerequisites
-- Python 3.x 
+- Python 3.x
+
+You can verify if Python is already installed on your machine by testing:
+```bash
+python --version
+```
+
+To install Python for Windows:
+```bash
+winget install --id Python.Python.3
+```
+
+For MacOs:
+```bash
+brew install python
+```
+
+For Linux (Ubuntu or Debian):
+```bash
+sudo apt update
+sudo apt install python3
+```
 
 ### Installation
 1. Clone the repository:
