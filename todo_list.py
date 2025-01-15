@@ -5,70 +5,58 @@ tasks = []
 
 # Function to add a task
 def add_task():
-    while True:  # Start an infinite loop
+    while True:
         task = input("Enter the task: ").strip()
-        if not task:  # Check if the task is empty or whitespace
+        if not task:
             print("Error: Task cannot be empty or whitespace. Please try again.")
         else:
-            tasks.append({"task": task, "completed": False})  # Add valid task
+            tasks.append({"task": task, "completed": False})
             print(f"Task '{task}' added successfully!")
-            break  # Exit the loop when a valid task is added
+            break
 
 # Function to list all tasks
 def list_tasks():
-    # Check if the task list is empty
-    if len(tasks) == 0:
+    if not tasks:
         print("No tasks available!")
-        return []
+        return
 
-    task_list = []
-    # Iterate over tasks with 1-based numbering
     for index, task in enumerate(tasks, start=1):
-        # Format the task with its status
         status = "✔" if task["completed"] else "✘"
-        task_str = f"{index}. {task['task']} [{status}]"
-        print(task_str)
-        task_list.append(task_str)
-    return task_list
+        print(f"{index}. {task['task']} [{status}]")
 
 # Function to mark a task as completed
 def mark_complete(index):
-    # Check if the provided index is out of range
-    if index < 0 or index >= len(tasks):  
-        print("Error: Invalid task index.")  # Notify the user of an invalid index
+    if index < 1 or index > len(tasks):
+        print("Error: Invalid task index.")
         return
-    # Mark the task at the given index as completed
-    tasks[index]["completed"] = True
-    # Notify the user of the successful update
-    print(f"Task {index + 1} marked as completed!")  
+    tasks[index - 1]["completed"] = True
+    print(f"Task {index} marked as completed!")
 
 # Function to delete a task
 def delete_task(index):
-    # Check if the provided index is out of range
-    if index < 1 or index > len(tasks):  
-        print("Error: Invalid task index.")  # Notify the user of an invalid index
+    if index < 1 or index > len(tasks):
+        print("Error: Invalid task index.")
         return
-    # Remove the task at the given index
-    tasks.pop(index)  
-    # Notify the user of the successful deletion
-    print(f"Task {index} deleted.")
+    removed_task = tasks.pop(index - 1)
+    print(f"Task '{removed_task['task']}' deleted.")
 
 # Function to edit a task
 def edit_task():
-    task_list = list_tasks()
-    if not task_list:
-        return  # If no tasks, do nothing.
+    if not tasks:
+        print("No tasks available to edit!")
+        return
 
+    list_tasks()
     try:
-        task_number = int(input("\nEnter the task number you want to edit: ")) - 1
-        if task_number < 0 or task_number >= len(tasks):
+        task_number = int(input("\nEnter the task number you want to edit: "))
+        if task_number < 1 or task_number > len(tasks):
             print("Error: Invalid task number.")
             return
 
         new_task = input("Enter the new task description: ").strip()
         if new_task:
-            tasks[task_number]["task"] = new_task
-            print(f"Task {task_number + 1} updated successfully!")
+            tasks[task_number - 1]["task"] = new_task
+            print(f"Task {task_number} updated successfully!")
         else:
             print("Error: Task description cannot be empty.")
     except ValueError:
@@ -104,7 +92,7 @@ def main():
                 print("Error: Please enter a valid task number.")
         elif choice == 4:
             try:
-                index = int(input("Enter the task number to delete: ")) - 1
+                index = int(input("Enter the task number to delete: "))
                 delete_task(index)
             except ValueError:
                 print("Error: Please enter a valid task number.")
